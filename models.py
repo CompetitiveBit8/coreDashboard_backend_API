@@ -6,26 +6,26 @@ class Users(Base):
     __tablename__ = "userdb"
 
     id = Column(Integer, primary_key=True)
-    username = Column(String, primary_key=True, index=True)
-    password = Column(String, nullable=False, index=True)
+    username = Column(String, index=True)
+    password = Column(String, index=True)
     age = Column(Integer, index=True)
     email = Column(String, index=True)
     adderss = Column(String, index=True)
-    username = Column(String, ForeignKey("userdb.username"), nullable=False)
     bio = Column(String, index=True)
-    memory = Column(String, index=True)
     picture = Column(String, index=True)
+    
+    info = relationship("memoTable", back_populates="user")
 
-# class infoTable(Base):
-#     __tablename__ = "info"
+class memoTable(Base):
+    __tablename__ = "memos"
 
-#     id = Column(Integer, primary_key=True)
-#     age = Column(Integer, index=True)
-#     email = Column(String, index=True)
-#     adderss = Column(String, index=True)
-#     username = Column(String, ForeignKey("userdb.username"), nullable=False)
+    id = Column(Integer, primary_key=True)
+    username = Column(String, ForeignKey("userdb.id"), index=True) 
+    title = Column(String, index=True)
+    memo = Column(String, index=True)
+    memoTime = Column(String, index=True)
 
-#     users = relationship("Users", back_populates="username")
+    user = relationship("Users", back_populates="info")
 
 
 class UserInput(Base):

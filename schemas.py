@@ -5,28 +5,32 @@ from typing import Optional
 class signupDetails(BaseModel):
     username: str
     password: str
-    # age: Optional[int] = None
-    # email: Optional[str] = None
-    # adderss: Optional[str] = None
 
 class UserDetails(BaseModel):
-    username: Optional[str] = None
-    password: Optional[str] = None
     age: Optional[int] = None
     email: Optional[str] = None
     adderss: Optional[str] = None
-    memories: Optional[str] = None
-    images: Optional[str] = None
     bio: Optional[str] = None
+
 
 class UserResponse(BaseModel):
     id: int
     username: str
+    password: str
+    age: int
+    email: str
+    adderss: str
+    bio: str
+    images: str
+
     
-class userEdit(BaseModel):
+class userInfo(BaseModel):
     email: str
     password: str
     email: str
+    bio: Optional[str] = None
+
 
 class userInputs(BaseModel):
-    bio: Optional[str] = None
+    memoTitle: Optional[str] = None
+    memo: str

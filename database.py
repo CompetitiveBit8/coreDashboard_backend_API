@@ -1,5 +1,5 @@
 from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy import Column, String, Integer, create_engine, MetaData
+from sqlalchemy import create_engine
 
 
 DATABASE_URL = "sqlite:///db.db"
