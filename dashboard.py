@@ -56,7 +56,6 @@ def access_token_refresh(user: signupDetails, db: Session = Depends(get_db)):
     return {"access_token": refresh_token, "token_bearer": "bearer", "user": db_user}
 
 
-
 @app.patch("/details")
 def user_detail_completion(user: UserDetails, db: Session = Depends(get_db), decodeAccess: dict = Depends(decode_access_token)):
     userName = decodeAccess.get("sub")    

@@ -5,7 +5,6 @@ from conf import settings
 from fastapi import Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
 
@@ -27,7 +26,6 @@ def refresh_token (data: dict, expires_delta: timedelta = None):
     expire = datetime.utcnow() + (expires_delta if expires_delta else timedelta(minutes = settings.access_token_expire_minutes))
     to_encode.update({"exp": expire})
     encode_jwt = jwt.encode(to_encode, settings.secret_key, algorithm=settings.algorithm)
-
 
 def decode_access_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     token = credentials.credentials

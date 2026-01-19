@@ -10,4 +10,3 @@ class Settings(BaseSettings):
     access_token_expire_minutes : int = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
 
 settings = Settings()
-
